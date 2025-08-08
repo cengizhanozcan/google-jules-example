@@ -21,7 +21,7 @@ public class StockFetchingScheduler {
     @Value("${app.stock.symbols}")
     private List<String> stockSymbols;
 
-    @Scheduled(fixedRateString = "${app.schedule.rate:600000}") // Default to 10 minutes
+    @Scheduled(cron = "${app.schedule.cron}")
     public void fetchStockData() {
         logger.info("Fetching stock data for symbols: {}", stockSymbols);
         for (String symbol : stockSymbols) {
